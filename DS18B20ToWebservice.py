@@ -1,3 +1,6 @@
+//The parts of this code for handling the temperature sensor were modified from a tutorial by Simon Monk, of Adafruit at 
+//http://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/ds18b20
+
 import requests
 import random
 import datetime
@@ -34,15 +37,8 @@ print 'starting';
 
 baseUrl = "https://script.google.com/macros/s/AKfycbxxfc58z2Yp2DDvtlE1uVAkVSHDV80WXfIQ7oSvy8JghrtcOLZE/exec";
 
-rand1 = random.random()
-temp = round(rand1*100, 2)
-
-rand2 = random.random()
-hum = round(rand2*35, 2)
-
 now = datetime.datetime.now();
 
-print (read_temp())
 deg_c, deg_f = read_temp()
 args = "timestamp=" + str(now) + "&tempc=" + str(deg_c) + "&tempf=" + str(deg_f)
 
