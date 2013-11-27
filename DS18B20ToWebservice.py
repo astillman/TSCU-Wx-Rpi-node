@@ -4,6 +4,8 @@
 //Replace with the URL of Apps Script web-app used to write to the spreadsheet
 baseUrl = "https://script.google.com/macros/s/AKfycbxxfc58z2Yp2DDvtlE1uVAkVSHDV80WXfIQ7oSvy8JghrtcOLZE/exec";
 
+//Set this file to run on cron at some regular interval
+
 import requests
 import random
 import datetime
