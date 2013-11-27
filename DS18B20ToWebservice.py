@@ -1,6 +1,9 @@
 //The parts of this code for handling the temperature sensor were modified from a tutorial by Simon Monk, of Adafruit at 
 //http://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/ds18b20
 
+//Replace with the URL of Apps Script web-app used to write to the spreadsheet
+baseUrl = "https://script.google.com/macros/s/AKfycbxxfc58z2Yp2DDvtlE1uVAkVSHDV80WXfIQ7oSvy8JghrtcOLZE/exec";
+
 import requests
 import random
 import datetime
@@ -34,8 +37,6 @@ def read_temp():
         return temp_c, temp_f    
 
 print 'starting';
-
-baseUrl = "https://script.google.com/macros/s/AKfycbxxfc58z2Yp2DDvtlE1uVAkVSHDV80WXfIQ7oSvy8JghrtcOLZE/exec";
 
 now = datetime.datetime.now();
 
