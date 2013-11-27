@@ -30,6 +30,9 @@ function doGet(e) {
 }
 
 
+//There are much simpler ways to write to spreadsheets, but the method below has the flexibility of 
+//treating each row of data as Javascript object  - hence much more robust in the face of users moving around columns, etc.
+
 // setRowsData fills in one row of data per object defined in the objects Array.
 // For every Column, it checks if data objects define a value for it.
 // Arguments:
