@@ -1,0 +1,9 @@
+var ssId = '0AjdG0Zk4rfrwdFU1WkY4bFhFeklOM0dFTHZIeVR6Smc'
+
+function doGet(e) {
+  var ss = SpreadsheetApp.openById(ssId)
+  var sheet = ss.getSheetByName('Sheet1');
+  var rowContents = [e.parameter.timestamp, e.parameter.tempc, e.parameter.tempf];
+  sheet.appendRow(rowContents);
+  return ContentService.createTextOutput("Success!");
+}
