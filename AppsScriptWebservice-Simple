@@ -5,5 +5,34 @@ function doGet(e) {
   var sheet = ss.getSheetByName('Sheet1');
   var rowContents = [e.parameter.timestamp, e.parameter.tempc, e.parameter.tempf];
   sheet.appendRow(rowContents);
+  
+  
+  //Extension activity to send email if temperature changes from above to below freezing
+  var latestTemp = getLatestTemp(sheet);
+  var previousTemp = getPreviousTemp(sheet);
+  if ((previousTemp>40)&&(latestTemp<40)) {
+    MailApp.sendEmail('astillman@gmail.com', 'Urgent: Freezing warning', 'The temperature has just dropped below 40 degrees');
+  }
+  
   return ContentService.createTextOutput("Success!");
+}
+
+
+
+//Returns most recently recorded Fahrenheit temperature from spreadsheet
+function getLatestTemp(sheet) {
+  var lastRow = sheet.getLastRow();
+  var lastTemp = sheet.getRange(lastRow, 3).getValue();
+  return lastTemp;
+}
+
+
+//Returns previously recorded Fahrenheit temperature from spreadsheet
+function getPreviousTemp(sheet) {
+  var nextToLastRow = sheet.getLastRow() - 1;
+  if (nextToLastRow > 1) {
+    var previousTemp = sheet.getRange(nextToLastRow, 3).getValue();
+    return previousTemp;
+  }
+ return;
 }
