@@ -29,7 +29,7 @@ function alertEmail(sheet) {
   var previousTemp = getPreviousTemp(sheet);
   //Send alert email if there is a change from above freezing to below freezing
   if ((previousTemp>32)&&(latestTemp<32)) {
-    MailApp.sendEmail('astillman@gmail.com', 'Urgent: Freezing warning', 'The temperature has just dropped below 40 degrees');
+    MailApp.sendEmail(myEmailAddress, 'Urgent: Freezing warning', 'The temperature has just dropped below 40 degrees');
   }
 }
 
@@ -42,7 +42,7 @@ function calendarEvent(sheet) {
   
   //Create a new calendar event if the temperature goes from above 32 to below 32
   if ((latestTemp<32)&&(previousTemp>32)) {
-    var myCalendar = CalendarApp.getCalendarById('admin@youpd.org');
+    var myCalendar = CalendarApp.getCalendarById(myEmailAddress);
     var newEventId = myCalendar.createEvent("Temp below 40", previousDateTime, latestDateTime).getId();
     ScriptProperties.setProperty('latestEventId', newEventId);  //store the event ID for future use
   }
